@@ -1,0 +1,23 @@
+{
+  "name": "shipwars-visualisations",
+  "version": "1.0.0",
+  "description": "Visualises shots and other data from the Shipwars game in realtime data from Kafka.",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build ./src/index.html",
+    "start:dev": "STREAMS_API_URL=http://localhost:8585/shot-distribution/stream parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "Evan Shortiss <evanshortiss@gmail.com> (https://evanshortiss.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  },
+  "targets": {
+    "app": {
+      "distDir": "dist/",
+      "source": "src/index.html"
+    }
+  }
+}

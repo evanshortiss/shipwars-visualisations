@@ -1,0 +1,9 @@
+
+.hidden {
+  display: none;
+}
+
+#game-grid {
+  width: 50vh;
+  height: 50vh;
+}
