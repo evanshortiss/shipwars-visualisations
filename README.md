@@ -2,6 +2,13 @@
 
 Provides a heatmap visualisation of player and AI shots in realtime.
 
+<div align="center">
+	<br>
+    <img style="max-width: 400px;" src="images/example-animation.gif"/>
+	<br>
+  <i>Animation showing player attacks. Dark squares are targeted most.</i>
+</div>
+
 ## Local Development
 
 Requirements:
