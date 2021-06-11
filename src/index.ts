@@ -20,11 +20,15 @@ const BG_COLOUR_STEPS = [
 ]
 const BG_COLOUR = 'blue'
 const COLOURS = BG_COLOUR_STEPS.map(depth => `bg-${BG_COLOUR}-${depth}`)
-
+enum DATA_INDEXES {
+  PLAYER_TYPE = 0,
+  HIT_MISS = 1,
+  ORIGIN = 2,
+}
 // Should be a value similar to 'http://my-streams-app-host.acme.com/shot-distribution/stream'
 // Can be defined at build time as STREAMS_API_URL in the environment, or
 // passed as a URL query parameter when loading this application
-const url = process.env.STREAMS_API_URL || new URL(window.location.href).searchParams.get('url')
+const url = new URL(window.location.href).searchParams.get('url') || process.env.STREAMS_API_URL
 
 const connectingEl =  document.getElementById('view-connecting')
 const visualisationEl =  document.getElementById('view-visualisation')
@@ -49,9 +53,22 @@ new Promise<void>((resolve, reject) => {
   }, 1000)
 
   source.onerror = reject
-  source.onmessage = (m) => {
-    const data = JSON.parse(m.data) as ShotEvent
-    processShotEvent(data.data)
+  source.onmessage = (m: MessageEvent<string>) => {
+    const parts = m.data.split(':')
+
+    if (parts.length !== 3) {
+      throw new Error(`received malformed payload: ${m.data}`)
+    }
+
+    processShotEvent({
+      hit: parts[DATA_INDEXES.HIT_MISS] === 'miss',
+      attacker: parts[DATA_INDEXES.PLAYER_TYPE],
+      origin: {
+        x: parseInt(parts[DATA_INDEXES.ORIGIN].split(',')[0]),
+        y: parseInt(parts[DATA_INDEXES.ORIGIN].split(',')[1])
+      }
+    })
+
     resolve()
   }
 })

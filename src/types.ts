@@ -10,11 +10,8 @@ export type HitStore = {
 
 export type ShotEventData = {
   attacker: string
-  game: string
   hit: boolean
-  match: string
   origin: { x: number, y: number }
-  scoreDelta: number
 }
 
 export type ShotEvent = {
