@@ -11,24 +11,12 @@
   <title>Shipwars Game Visualiser</title>
 </head>
 
-<body class="bg-gray-50 content-center flex h-screen items-center justify-center">
-  <div id="view-connecting" class="py-4 text-center w-screen">
-    <h2 id="status" class="py-2 text-2xl">Connecting to Quarkus Kafka Streams Service</h2>
-    <div class="lds-roller m-4">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <div id="view-visualisation" class="hidden">
-    <div id="game-grid" class="m-auto"></div>
-  </div>
-  <script src="index.ts"></script>
+<body class="bg-gray-50 content-center flex flex-col h-screen text-center items-center justify-center">
+  <h2 class="text-3xl">
+    Shipwars Analytics</h2>
+  <br>
+  <a class="hover:underline text-blue-600 pb-2" href="./heatmap.html">Real-time Heatmap</a>
+  <a class="hover:underline text-blue-600" href="./aggregate.html">Game Aggregates</a>
 </body>
 
 </html>

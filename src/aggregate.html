@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="loader.css">
+  <title>Shipwars Game Visualiser</title>
+</head>
+
+<body class="bg-gray-50 content-center flex h-screen items-center justify-center">
+  <div id="view-visualisation">
+    <form name="display_types">
+      <div class="text-center justify-items-center">
+        <label for="AI Hit" class="text-gray-700 pr-5">
+          <input type="checkbox" id="AI Hit" name="AI Hit" value="ai_hit">
+          <span class="ml-1">AI Hit</span>
+        </label>
+
+        <label for="AI Miss" class="text-gray-700 pr-5">
+          <input type="checkbox" id="AI Miss" name="AI Miss" value="ai_miss">
+          <span class="ml-1">AI Miss</span>
+        </label>
+
+        <label for="Human Hit" class="text-gray-700 pr-5">
+          <input type="checkbox" id="Human Hit" name="Human Hit" value="human_hit">
+          <span class="ml-1">Human Hit</span>
+        </label>
+
+        <label for="Human Miss" class="text-gray-700 pr-5">
+          <input type="checkbox" id="Human Miss" name="Human Miss" value="human_miss">
+          <span class="ml-1">Human Miss</span>
+        </label>
+        <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      </div>
+      <br>
+      <div class="flex">
+      </div>
+    </form>
+
+    <div id="game-grid" class="m-auto"></div>
+  </div>
+  <script src="aggregate.ts"></script>
+</body>
+
+</html>
