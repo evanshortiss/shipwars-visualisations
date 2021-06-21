@@ -51,3 +51,23 @@ export IMAGE_REPOSITORY=quay.io/evanshortiss
 ./scripts/build.sh
 ./scripts/push.sh
 ```
+
+## Build and Deploy on OpenShift
+
+Use the following command to deploy this service on OpenShift. The command
+assumes that you've already deployed the
+[Shipwars Streams](https://github.com/evanshortiss/shipwars-streams)
+applications in the same OpenShift Project.
+
+```bash
+export BUILDER=quay.io/evanshortiss/s2i-nodejs-nginx
+export SOURCE=https://github.com/evanshortiss/shipwars-visualisations
+export ROUTE=$(oc get route shipwars-streams-shot-distribution -o jsonpath='{.spec.host}')
+
+oc new-app $BUILDER~$SOURCE \
+--name shipwars-visualisations \
+--build-env STREAMS_API_URL=http://$ROUTE/ \
+-l app.kubernetes.io/part-of=shipwars-analysis \
+-l app.openshift.io/runtime=nginx
+
+```
