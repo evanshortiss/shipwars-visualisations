@@ -41,10 +41,6 @@ new Promise<void>((resolve, reject) => {
   source.onmessage = (m: MessageEvent<string>) => {
     const parts = m.data.split(':')
 
-    if (parts.length !== 3) {
-      throw new Error(`received malformed payload: ${m.data}`)
-    }
-
     processShotEvent({
       hit: parts[SSE_DATA_INDEXES.HIT_MISS] === 'miss',
       attacker: parts[SSE_DATA_INDEXES.PLAYER_TYPE],

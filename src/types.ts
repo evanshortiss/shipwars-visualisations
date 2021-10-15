@@ -46,4 +46,5 @@ export enum SSE_DATA_INDEXES {
   PLAYER_TYPE = 0,
   HIT_MISS = 1,
   ORIGIN = 2,
+  PLAYER_NAME = 3
 }
